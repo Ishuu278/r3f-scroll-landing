@@ -272,7 +272,7 @@ export const Sections: React.FC = () => {
                 <a href="https://github.com/Ishuu278/job-kart" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
                   GitHub
                 </a>
-                <a href="https://job-kart-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
+                <a href="https://job-kart-qrjm.onrender.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
                   Live Demo
                 </a>
               </div>
