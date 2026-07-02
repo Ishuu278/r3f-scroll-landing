@@ -7,14 +7,13 @@ export const LoadingScreen: React.FC = () => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // If progress is complete, fade out and unmount the screen
     if (!active && progress === 100) {
-      const timer = setTimeout(() => {
-        setFadeOut(true);
-        const removeTimer = setTimeout(() => setShouldRender(false), 800);
-        return () => clearTimeout(removeTimer);
-      }, 500);
-      return () => clearTimeout(timer);
+      const fadeTimer = setTimeout(() => setFadeOut(true), 500);
+      const removeTimer = setTimeout(() => setShouldRender(false), 1300);
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(removeTimer);
+      };
     }
   }, [active, progress]);
 

@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Scene } from './components/Scene';
 import { Sections } from './components/Sections';
 import { LoadingScreen } from './components/LoadingScreen';
+import { Navbar } from './components/Navbar';
 
 // Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -51,11 +52,12 @@ function App() {
 
       // SECTION 2 -> SECTION 3 TRANSITION
       // Center the centerpiece, zoom out, rotate dramatically, and morph fluidly
+      // Pushed further down and smaller to avoid overlapping CTA text
       tl.to(scrollStateRef.current, {
         positionX: 0,
-        positionY: isDesktop ? 0.3 : 0.8,
-        positionZ: -1,
-        scale: isDesktop ? 0.55 : 0.45,
+        positionY: isDesktop ? 1.8 : 2.2,
+        positionZ: -2,
+        scale: isDesktop ? 0.35 : 0.3,
         rotationZ: Math.PI * 2,
         rotationY: Math.PI,
         distort: 0.65,
@@ -176,6 +178,117 @@ function App() {
           toggleActions: 'play none none reverse'
         }
       });
+
+      // Section 4 (About) scroll-triggered content reveal
+      gsap.fromTo('.section-about .reveal-about-title', {
+        y: '100%',
+        opacity: 0
+      }, {
+        y: '0%',
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.section-about',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      gsap.fromTo('.avatar-frame', {
+        scale: 0.8,
+        opacity: 0,
+      }, {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: 'back.out(1.5)',
+        scrollTrigger: {
+          trigger: '.section-about',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      gsap.fromTo('.about-paragraph', {
+        y: 30,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 0.3,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.section-about',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Section 5 (Skills) scroll-triggered content reveal
+      gsap.fromTo('.section-skills .reveal-skills-title', {
+        y: '100%',
+        opacity: 0
+      }, {
+        y: '0%',
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.section-skills',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      gsap.fromTo('.skills-category', {
+        y: 40,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.skills-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Section 6 (Projects) scroll-triggered content reveal
+      gsap.fromTo('.section-projects .reveal-projects-title', {
+        y: '100%',
+        opacity: 0
+      }, {
+        y: '0%',
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.section-projects',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      gsap.fromTo('.project-card', {
+        y: 50,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.projects-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
     });
 
     return () => ctx.revert();
@@ -183,6 +296,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <LoadingScreen />
       <Scene scrollState={scrollStateRef} />
       <Sections />

@@ -19,6 +19,7 @@ interface SceneProps {
 const Centerpiece: React.FC<SceneProps> = ({ scrollState }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const materialRef = useRef<any>(null);
   
   const mouse = useRef({ x: 0, y: 0 });
